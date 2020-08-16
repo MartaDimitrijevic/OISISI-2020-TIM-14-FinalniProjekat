@@ -1,10 +1,17 @@
 package model;
 
-public class Korisnik {
+import java.io.Serializable;
 
+public class Korisnik implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 506164890054350708L;
+	
 	private String ime;
 	private String prezime;
-	private TipKor tip;
+	private TipKorisnika tip;
 	private String korIme;
 	private String lozinka;
 	private boolean obrisan;
@@ -12,7 +19,7 @@ public class Korisnik {
 	public Korisnik() {
 	}
 
-	public Korisnik(String ime, String prezime, TipKor tip, String korIme, String lozinka, boolean obrisan) {
+	public Korisnik(String ime, String prezime, TipKorisnika tip, String korIme, String lozinka, boolean obrisan) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.tip = tip;
@@ -37,7 +44,7 @@ public class Korisnik {
 		this.prezime = prezime;
 	}
 
-	public String korIme() {
+	public String getKorIme() {
 		return korIme;
 	}
 
@@ -61,29 +68,30 @@ public class Korisnik {
 		this.obrisan = obrisan;
 	}
 
-	public enum TipKor { // ne znam sto ovde mora enum da ide
+//	public enum TipKor { // ne znam sto ovde mora enum da ide
+//
+//		LEKAR("Lekar"), APOTEKAR("Apotekar"), ADMIN("Administrator");
+//		// NONE(" "); ne znam da li mora none
+//
+//		private String opis;
+//
+//		private TipKor(String opis) {
+//			this.opis = opis;
+//		}
+//
+//		public String getOpis() {
+//			return opis;
+//		}
+//
+//	}
 
-		LEKAR("Lekar"), APOTEKAR("Apotekar"), ADMIN("Administrator");
-		// NONE(" "); ne znam da li mora none
-
-		private String opis;
-
-		private TipKor(String opis) {
-			this.opis = opis;
-		}
-
-		public String getOpis() {
-			return opis;
-		}
-
-	}
-
-	public TipKor getTip() {
+	public TipKorisnika getTip() {
 		return tip;
 	}
 
-	public void setTip(TipKor tip) {
+	public void setTip(TipKorisnika tip) {
 		this.tip = tip;
 	}
-
+	
+	
 }
