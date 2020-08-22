@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -28,19 +29,9 @@ import application.MainFrame;
 
 public class LogIn extends JDialog {
 
-//	public static void main(String[] args) {
-//		try {
-//			LogIn logInDialog = new LogIn();
-//			logInDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-////			logInDialog.setMinimumSize(new Dimension(450, 350));
-//			logInDialog.setVisible(true);
-//		} 
-//		catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
 	JTextField ime;
 	JPasswordField sifra;
+	int i = 0;
 
 	public LogIn() {
 		setSize(400, 200);
@@ -129,6 +120,7 @@ public class LogIn extends JDialog {
 //					// TODO Auto-generated catch block
 //					e.printStackTrace();
 //				}
+
 				try {
 					ObjectInputStream objectInput = new ObjectInputStream(new FileInputStream("korisnik.txt"));
 
@@ -147,13 +139,18 @@ public class LogIn extends JDialog {
 								setVisible(false);
 								MainFrame mainFrameScreen = new MainFrame(kor);
 								mainFrameScreen.setVisible(true);
-
+								objectInput.close();
 								break;
 							}
 						}
 					}
 				} catch (EOFException eof) {
-					System.out.println("Reached end of file");
+					i = i + 1;
+					System.out.println("Reached end of file" + i);
+					if (i > 2) {
+						setVisible(false);
+						JOptionPane.showMessageDialog(null, "Korisnicko ime ili lozinka ne postoji.", "Greška", JOptionPane.ERROR_MESSAGE);
+					}
 				} catch (IOException | ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

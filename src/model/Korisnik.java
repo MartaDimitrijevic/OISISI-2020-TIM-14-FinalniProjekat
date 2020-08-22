@@ -32,66 +32,48 @@ public class Korisnik implements Serializable {
 		return ime;
 	}
 
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
-
 	public String getPrezime() {
 		return prezime;
-	}
-
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
 	}
 
 	public String getKorIme() {
 		return korIme;
 	}
 
-	public void setKorIme(String korIme) {
-		this.korIme = korIme;
-	}
-
 	public String getLozinka() {
 		return lozinka;
-	}
-
-	public void setLozinka(String lozinka) {
-		this.lozinka = lozinka;
 	}
 
 	public boolean isObrisan() {
 		return obrisan;
 	}
 
-	public void setObrisan(boolean obrisan) {
-		this.obrisan = obrisan;
-	}
-
-//	public enum TipKor { // ne znam sto ovde mora enum da ide
-//
-//		LEKAR("Lekar"), APOTEKAR("Apotekar"), ADMIN("Administrator");
-//		// NONE(" "); ne znam da li mora none
-//
-//		private String opis;
-//
-//		private TipKor(String opis) {
-//			this.opis = opis;
-//		}
-//
-//		public String getOpis() {
-//			return opis;
-//		}
-//
-//	}
-
 	public TipKorisnika getTip() {
 		return tip;
+	}
+
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
 	}
 
 	public void setTip(TipKorisnika tip) {
 		this.tip = tip;
 	}
-	
+
+	public void setKorIme(String korIme) {
+		this.korIme = korIme;
+	}
+
+	public void setLozinka(String lozinka) {
+		this.lozinka = lozinka;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
+	}
 	
 }

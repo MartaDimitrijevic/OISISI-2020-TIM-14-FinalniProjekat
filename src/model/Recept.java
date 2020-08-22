@@ -1,29 +1,35 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Recept {
+public class Recept implements Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4150572356720514260L;
+	
+	private int index;
 	private int sifra;
-	private Korisnik lekar;
+	private String lekar;
 	private String jmbg;
-	private Date datumIvreme;
-	private Lekovi lek;
-	private int kolicina;
-	private float ukCena;
+	private String datumIvreme;
+	private Map<String, Integer> lekKolicina = new HashMap<String, Integer>();
 	private boolean obrisan;
 
 	public Recept() {
 	}
 
-	public Recept(int sifra, Korisnik lekar, String jmbg, Date datumIvreme, Lekovi lek, int kolicina, float ukCena,
-			boolean obrisan) {
+	public Recept(int sifra, String lekar, String jmbg, String datumIvreme, Map<String, Integer> lekKolicina, boolean obrisan) {
 		this.sifra = sifra;
 		this.lekar = lekar;
 		this.jmbg = jmbg;
 		this.datumIvreme = datumIvreme;
-		this.lek = lek;
-		this.kolicina = kolicina;
-		this.ukCena = ukCena;
+		this.lekKolicina = lekKolicina;
 		this.obrisan = obrisan;
 	}
 
@@ -31,63 +37,47 @@ public class Recept {
 		return sifra;
 	}
 
-	public void setSifra() {
-		this.sifra = sifra;
-	}
-
-	public Korisnik getLekar() {
+	public String getLekar() {
 		return lekar;
 	}
-	
-	public void setLekar() {
-		this.lekar = lekar;
-	}
-	
+
 	public String getJmbg() {
 		return jmbg;
 	}
-
-	public void setJmbg() {
-		this.jmbg = jmbg;
-	}
-
-	public Date getDatumIvreme() {
+	
+	public String getDatumIvreme() {
 		return datumIvreme;
 	}
 
-	public void setDatumIvreme() {
-		this.datumIvreme = datumIvreme;
-	}
-	
-	public Lekovi getLek() {
-		return lek;
-	}
-	
-	public void setLek() {
-		this.lek = lek;
-	}
-
-	public int getKolicina() {
-		return kolicina;
-	}
-
-	public void setKolicina() {
-		this.kolicina = kolicina;
-	}
-
-	public float getUkCena() {
-		return ukCena;
-	}
-
-	public void setUkCena() {
-		this.ukCena = ukCena;
+	public Map<String, Integer> getLekKolicina() {
+		return lekKolicina;
 	}
 
 	public boolean isObrisan() {
 		return obrisan;
 	}
 
-	public void setObrisan() {
+	public void setSifra(int sifra) {
+		this.sifra = sifra;
+	}
+
+	public void setLekar(String lekar) {
+		this.lekar = lekar;
+	}
+
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public void setDatumIvreme(String datumIvreme) {
+		this.datumIvreme = datumIvreme;
+	}
+
+	public void setLekKolicina(Map<String, Integer> lekKolicina) {
+		this.lekKolicina = lekKolicina;
+	}
+
+	public void setObrisan(boolean obrisan) {
 		this.obrisan = obrisan;
 	}
 }

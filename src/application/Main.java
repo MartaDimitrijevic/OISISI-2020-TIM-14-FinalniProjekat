@@ -1,6 +1,9 @@
 package application;
 
+import javax.swing.JFrame;
+
 import gui.LogIn;
+import gui.ReceptiMeni;
 
 public class Main {
 
