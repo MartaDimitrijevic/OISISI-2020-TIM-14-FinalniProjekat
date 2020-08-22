@@ -72,6 +72,9 @@ public class KorisniciMeni extends JPanel{
 		sortiranjeKor.setVisible(false);
 		registracijaKor.setVisible(false);
 
+		JPanel bottomPanelKor = new JPanel();
+		bottomPanelKor.setBackground(new Color(230, 255, 251));
+		
 		JButton btn1Kor = new JButton("Registracija");
 		btn1Kor.setFont(new Font("Arial", 0, 27));
 		btn1Kor.setBackground(new Color(187, 230, 212));
@@ -99,7 +102,7 @@ public class KorisniciMeni extends JPanel{
 				// TODO Auto-generated method stub
 				System.out.println("akcija " + e.getActionCommand());
 				KorisnikPrikaz korisniciPrikaz = new KorisnikPrikaz();
-				korisniciPrikaz.sortiranjeKorisnika(sortiranjeKor);
+				korisniciPrikaz.sortiranjeKorisnika(sortiranjeKor, bottomPanelKor);
 				sortiranjeKor.setVisible(true);
 				registracijaKor.setVisible(false);
 			}
@@ -109,8 +112,7 @@ public class KorisniciMeni extends JPanel{
 		korisniciPanel.add(korisnici, BorderLayout.CENTER);
 		korisniciPanel.add(sortiranjeKor, BorderLayout.SOUTH);
 		
-		JPanel bottomPanelKor = new JPanel();
-		bottomPanelKor.setBackground(new Color(230, 255, 251));
+		
 		
 		bottomPanelKor.add(registracijaKor, BorderLayout.CENTER);
 		

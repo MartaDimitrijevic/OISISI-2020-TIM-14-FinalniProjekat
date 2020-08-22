@@ -5,7 +5,10 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -14,8 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import action.ReceptiAkcija;
+import action.KorisnikAkcija;
+import model.TipKorisnika;
+
 public class KorisnikRegistracija {
 public KorisnikRegistracija() {}
+
+public static String radioString = "Lekar";
 	
 	public void registracijaKorisnika(JPanel registracijaKor) {
 		registracijaKor.setVisible(true);
@@ -61,24 +70,32 @@ public KorisnikRegistracija() {}
 		JLabel typeKor = new JLabel("Tip korisnika :");
 		typeKor.setFont(new Font("Ariel", 0, 30));
 		
+		
 		JRadioButton radBtnKorReg1 = new JRadioButton("Lekar");
 		radBtnKorReg1.setFont(new Font("Arial", 0, 23));
 		radBtnKorReg1.setBackground(new Color(230, 255, 251));
+		radBtnKorReg1.setSelected(true);
 	
 		JRadioButton radBtnKorReg2 = new JRadioButton("Apotekar");
 		radBtnKorReg2.setFont(new Font("Arial", 0, 23));
 		radBtnKorReg2.setBackground(new Color(230, 255, 251));
+		radBtnKorReg2.setSelected(false);
 		
 		ButtonGroup registracijaTipaKor = new ButtonGroup( );
 		
 		registracijaTipaKor.add(radBtnKorReg1);
 		registracijaTipaKor.add(radBtnKorReg2);
 		
-		String radioText = "";
-			
-		if (radBtnKorReg1.isSelected()) {radioText = radBtnKorReg1.getText(); }
-		if (radBtnKorReg2.isSelected()) {radioText = radBtnKorReg2.getText(); }
-		
+	    ActionListener sliceActionListener = new ActionListener() {
+	        public void actionPerformed(ActionEvent actionEvent) {
+	          AbstractButton aButton = (AbstractButton) actionEvent.getSource();
+	          System.out.println("Selected: " + aButton.getText());
+	          KorisnikRegistracija.radioString = aButton.getText();
+	        }
+	      };
+	    radBtnKorReg1.addActionListener(sliceActionListener);
+	    radBtnKorReg2.addActionListener(sliceActionListener);
+
 		raddioButtonsKorReg.add(typeKor);
 		raddioButtonsKorReg.add(radBtnKorReg1);
 		raddioButtonsKorReg.add(radBtnKorReg2);
@@ -120,6 +137,24 @@ public KorisnikRegistracija() {}
 		JButton btnPrh = new JButton("Registruj");
 		btnPrh.setFont(new Font("Arial", 0, 30));
 		btnPrh.setBackground(new Color(0, 204, 255));
+		btnPrh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String ime = textArea1Kor.getText();
+				String prezime = textArea2Kor.getText();
+				String korisnickoIme = textArea4.getText();
+				String lozinka = textArea5Kor.getText();
+				KorisnikAkcija registracija = new KorisnikAkcija();
+				try {
+					registracija.registracijaKorisnika(ime, prezime, TipKorisnika.valueOf(KorisnikRegistracija.radioString), korisnickoIme, lozinka, false);
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 
 		btn1Kor.add(btnPrh);
 
