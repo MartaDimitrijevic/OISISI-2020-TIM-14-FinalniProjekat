@@ -57,7 +57,6 @@ public class KorisnikPrikaz extends JPanel {
 		KorisnikAkcija registracijaKorisnika = new KorisnikAkcija();
 		ArrayList<Korisnik> sviKorisnici = registracijaKorisnika.ucitajKorisnike(fileName);
 
-		JPanel tablePanelKorPret = new JPanel();
 
 		JPanel tablePanKorPrik = new JPanel();
 		JTable prikazKorisniciTabela = getPrikazKorisnikaTabela(sviKorisnici);
@@ -78,7 +77,6 @@ public class KorisnikPrikaz extends JPanel {
 
 				revalidate();
 				repaint();
-				tablePanelKorPret.setVisible(false);
 				tablePanKorPrik.setVisible(true);
 
 				TableRowSorter<TableModel> sorter = new TableRowSorter<>(prikazKorisniciTabela.getModel());
@@ -122,7 +120,6 @@ public class KorisnikPrikaz extends JPanel {
 
 				revalidate();
 				repaint();
-				tablePanelKorPret.setVisible(false);
 				tablePanKorPrik.setVisible(true);
 
 				TableRowSorter<TableModel> sorter = new TableRowSorter<>(prikazKorisniciTabela.getModel());
@@ -153,7 +150,6 @@ public class KorisnikPrikaz extends JPanel {
 
 				revalidate();
 				repaint();
-				tablePanelKorPret.setVisible(false);
 				tablePanKorPrik.setVisible(true);
 
 				TableRowSorter<TableModel> sorter = new TableRowSorter<>(prikazKorisniciTabela.getModel());
@@ -195,10 +191,10 @@ public class KorisnikPrikaz extends JPanel {
 		sortiranjeKor.add(sortirajPanelKor, BorderLayout.WEST);
 		sortiranjeKor.add(raddioButtonsKorPrik, BorderLayout.CENTER);
 
-		sortiranjeKor.add(scroll, BorderLayout.CENTER);
-		sortiranjeKor.setVisible(false);
+		tablePanKorPrik.add(scroll, BorderLayout.CENTER);
+		tablePanKorPrik.setVisible(false);
 		
-		bottomPanelKor.add(sortiranjeKor, BorderLayout.CENTER);
+		bottomPanelKor.add(tablePanKorPrik, BorderLayout.CENTER);
 	}
 
 	private JTable getPrikazKorisnikaTabela(ArrayList<Korisnik> korisniciLista) {
